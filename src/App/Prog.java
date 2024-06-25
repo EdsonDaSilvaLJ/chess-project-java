@@ -15,14 +15,24 @@ public class Prog {
 
 		
 		while (true) {
-			
-			UI.printBoard(chessMatch.getPieces());
-			System.out.println("\nSource: ");
-			ChessPosition source = UI.readChessPosition(sc);
-			System.out.println("\nTarget:");
-			ChessPosition target = UI.readChessPosition(sc);
-			
-			ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+			try {
+				UI.clearScreen();
+				UI.printBoard(chessMatch.getPieces());
+				System.out.println("\nSource: ");
+				ChessPosition source = UI.readChessPosition(sc);
+				System.out.println("\nTarget:");
+				ChessPosition target = UI.readChessPosition(sc);
+				
+				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+			}
+			catch (ChessException e) {
+				System.out.println(e.getMessage());
+				sc.nextLine();
+			}
+			catch (Exception e) {
+				System.out.println(e.getMessage());
+				sc.nextLine();
+			}
 		}
 	
 	}

@@ -18,11 +18,15 @@ public class Prog {
 			try {
 				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces());
+				
+				
 				System.out.println("\nSource: ");
-				ChessPosition source = UI.readChessPosition(sc);
+				ChessPosition source = UI.readChessPosition(sc);				
+				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+				UI.printBoard(chessMatch.getPieces(), chessMatch.possibleMoves(source));
+				
 				System.out.println("\nTarget:");
 				ChessPosition target = UI.readChessPosition(sc);
-				
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 			}
 			catch (ChessException e) {
